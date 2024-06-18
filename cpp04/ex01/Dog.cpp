@@ -36,12 +36,7 @@ Dog &Dog::operator=(Dog const &src){
 	return *this;
 }
 void	Dog::makeSound() const{
-	if (this->type == "Dog")
-		std::cout<<"OUAF"<<std::endl;
-	else if (this->type == "Cat")
-		std::cout<<"MIAOU"<<std::endl;
-	else
-		std::cout<<"Animal is not a cat or dog"<<std::endl;
+	std::cout<<"OUAF"<<std::endl;
 }
 
 Brain *Dog::getBrain(void) const {

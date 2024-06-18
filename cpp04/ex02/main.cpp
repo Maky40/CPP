@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnie <mnie@student.42perpignan.fr>         +#+  +:+       +#+        */
+/*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 10:23:06 by mnie              #+#    #+#             */
-/*   Updated: 2024/06/08 11:53:18 by mnie             ###   ########.fr       */
+/*   Updated: 2024/06/11 18:58:19 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 #include "WrongCat.hpp"
 
 int main() {
-	// Can't instantiate abstract class
-	// const AAnimal *animal;
-	// animal = new AAnimal();
+	const AAnimal *animal;
+	animal = new AAnimal();
 
 	const AAnimal *animal[20];
 
@@ -33,12 +32,6 @@ int main() {
 	}
 	for (int i = 0; i < 20; i++)
 		delete animal[i];
-	Dog *wouaf = new Dog();
-	wouaf->getBrain()->setIdea(0, "Je mange des croquettes");
-	wouaf->getBrain()->setIdea(1, "Je fais des calins");
-	std::cout << wouaf->getBrain()->getIdea(0) << std::endl;
-	std::cout << wouaf->getBrain()->getIdea(1) << std::endl;
-	delete wouaf;
 
 	Cat cat1;
 	Cat cat2;

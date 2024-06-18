@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnie <mnie@student.42perpignan.fr>         +#+  +:+       +#+        */
+/*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 09:46:06 by mnie              #+#    #+#             */
-/*   Updated: 2024/06/08 18:34:36 by mnie             ###   ########.fr       */
+/*   Updated: 2024/06/11 18:52:06 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ Cat &Cat::operator=(const Cat &src){
 	return *this;
 }
 void	Cat::makeSound() const{
-	if (this->type == "Dog")
-		std::cout<<"OUAF"<<std::endl;
-	else if (this->type == "Cat")
-		std::cout<<"MIAOU"<<std::endl;
-	else
-		std::cout<<"AAnimal is not a cat or dog"<<std::endl;
+	std::cout<<"MIAOU"<<std::endl;
 }
 Brain *Cat::getBrain(void) const {
     return (this->_brain);

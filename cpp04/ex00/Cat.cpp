@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnie <mnie@student.42perpignan.fr>         +#+  +:+       +#+        */
+/*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 09:46:06 by mnie              #+#    #+#             */
-/*   Updated: 2024/06/05 18:05:23 by mnie             ###   ########.fr       */
+/*   Updated: 2024/06/11 17:15:12 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,5 @@ Cat &Cat::operator=(const Cat &src){
 	return *this;
 }
 void	Cat::makeSound() const{
-	if (this->type == "Dog")
-		std::cout<<"OUAF"<<std::endl;
-	else if (this->type == "Cat")
-		std::cout<<"MIAOU"<<std::endl;
-	else
-		std::cout<<"Animal is not a cat or dog"<<std::endl;
+	std::cout<<"MIAOU"<<std::endl;
 }

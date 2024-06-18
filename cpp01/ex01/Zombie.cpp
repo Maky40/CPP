@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnie <mnie@student.42perpignan.fr>         +#+  +:+       +#+        */
+/*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 15:27:42 by mnie              #+#    #+#             */
-/*   Updated: 2024/05/30 15:38:41 by mnie             ###   ########.fr       */
+/*   Updated: 2024/06/10 15:44:22 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ Zombie::Zombie()
 }
 Zombie::Zombie(std::string name)
 {
+	this->name = name;
 }
 
 Zombie::~Zombie()

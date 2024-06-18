@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnie <mnie@student.42perpignan.fr>         +#+  +:+       +#+        */
+/*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 09:32:48 by mnie              #+#    #+#             */
-/*   Updated: 2024/06/05 15:57:09 by mnie             ###   ########.fr       */
+/*   Updated: 2024/06/11 17:54:42 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,17 @@ Animal::~Animal()
 {
 	std::cout<<"Kill an Animal"<<std::endl;
 }
-Animal &Animal::operator=(const Animal &src){
+Animal &Animal::operator=(const Animal &src)
+{
 	if (this != &src)
 		this->type = src.type;
 	return *this;
 }
-void	Animal::makeSound() const{
+void	Animal::makeSound() const
+{
 	std::cout<<this->type<<" has no sound because it's not a cat or dog"<<std::endl;
 }
-std::string Animal::getType() const{
+std::string Animal::getType() const
+{
 	return (this->type);
 }
