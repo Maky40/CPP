@@ -6,7 +6,7 @@
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:18:45 by mnie              #+#    #+#             */
-/*   Updated: 2024/07/06 12:49:07 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:34:50 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,17 @@ std::string Bureaucrat::getName() const{
 int Bureaucrat::getGrade() const {
     return (this -> _grade);}
 
+// MEMBER FUNCTION
+void Bureaucrat::signForm(Form &_form)
+{
+    try {
+        _form.beSigned( *this );
+        std::cout << _name << " signed " << _form.getName() << std::endl;
+    } catch (Form::GradeTooLowException &e) {
+        std::cout << _name << " coulnd't sign " << _form.getName() 
+        << " because " << e.what() << std::endl;
+    }
+}
 
 // INCREMENT AND DECREMENT
 void verify_grade(int grade)
@@ -92,7 +103,6 @@ void Bureaucrat::decrement()
 // OVERLOARD OPERATORS AND STREAM
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 {
-	std::cout << "Bureaucrat Assignation operator called" << std::endl;
 	if (this == &src)
 		return *this;
 

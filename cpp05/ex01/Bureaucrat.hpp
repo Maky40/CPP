@@ -6,7 +6,7 @@
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:18:51 by mnie              #+#    #+#             */
-/*   Updated: 2024/07/06 12:58:30 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:26:36 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
 
 #define BLUE "\033[94m"
 #define RESET "\033[0m"
@@ -44,6 +45,9 @@ class Bureaucrat {
     // Getters
     std::string getName() const;
     int getGrade() const;
+
+    // Member function
+    void signForm(Form &_form);
 
     // Increment et decrement functions
     void increment();
