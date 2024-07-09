@@ -6,12 +6,12 @@
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:18:45 by mnie              #+#    #+#             */
-/*   Updated: 2024/07/07 15:03:19 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/07 18:20:48 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // CONSTRUCTORS
 Bureaucrat::Bureaucrat() : _name(""), _grade(150) {}
@@ -49,14 +49,25 @@ int Bureaucrat::getGrade() const {
 }
 
 // MEMBER FUNCTION
-void Bureaucrat::signForm(Form &_form) {
+void Bureaucrat::signForm(AForm &_form) {
     try {
         _form.beSigned(*this);
         std::cout << _name << " signed " << _form.getName() << std::endl;
-    } catch (Form::GradeTooLowException &e) {
+    } catch (AForm::GradeTooLowException &e) {
         std::cout << _name << " couldn't sign " << _form.getName() 
                   << " because " << e.what() << std::endl;
     }
+}
+void Bureaucrat::executeForm(AForm const & form){
+    try
+	{
+		form.execute(*this);
+	}
+	catch (std::exception & e) 
+	{
+		std::cerr << this->getName() << RED << " couldn’t execute " << 
+			form.getName() << RED << " because " << e.what() << RESET << std::endl; 
+	}
 }
 
 // INCREMENT AND DECREMENT

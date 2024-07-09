@@ -6,7 +6,7 @@
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:18:51 by mnie              #+#    #+#             */
-/*   Updated: 2024/07/07 14:49:25 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/07 17:45:57 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define GREEN "\033[32m"
 #define YELLOW "\033[33m"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -48,7 +48,8 @@ class Bureaucrat {
     int getGrade() const;
 
     // Member function
-    void signForm(Form &_form);
+    void signForm(AForm &_form);
+    void executeForm(AForm const & form);
 
     // Increment et decrement functions
     void increment();

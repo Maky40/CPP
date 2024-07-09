@@ -6,38 +6,81 @@
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:18:48 by mnie              #+#    #+#             */
-/*   Updated: 2024/06/18 15:45:36 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/07 15:20:38 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp" 
+
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-    std::cout << RED << "\nTest Invalid Grade" << std::endl;
-    try {
-        Bureaucrat bureaucrat("ash", -1);
-        std::cout << bureaucrat << std::endl;
-    } catch (Bureaucrat::GradeTooHighException &e) {
-        std::cout << e.what() << std::endl;
-    }
-     try {
-        Bureaucrat bureaucrat("yo", 151);
-        std::cout << bureaucrat << std::endl;
-    } catch (Bureaucrat::GradeTooLowException &e) {
-        std::cout << e.what() << std::endl;
-    }
-    std::cout << GREEN << "Test Increment with Grade at 2 (three times)" << std::endl;
-    Bureaucrat artiste("l'artiste", 2);
-    artiste.increment();
-    artiste.increment();
-    artiste.increment();
-    std::cout << artiste;
-    std::cout << YELLOW << "\nTest Decrement with Grade at 147 (four times)" << std::endl;
-    Bureaucrat dofus("dofus temporis", 147);
-    dofus.decrement();
-    dofus.decrement();
-    dofus.decrement();
-    dofus.decrement();
-    std::cout << dofus;
+	try
+	{
+		Bureaucrat dofus("dofus", 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << "----------------------------------------------" << std::endl;
+	try
+	{
+		Bureaucrat Maignan("Maignan", 150);
+		Maignan.decrement();
+		std::cout << Maignan << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << "----------------------------------------------" << std::endl;
+	try
+	{
+		Bureaucrat MJ("MJ", 5);
+		for(int i = 0; i < 5; i++)
+		{
+			MJ.increment();
+			std::cout << MJ << std::endl;
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << "----------------------------------------------" << std::endl;
+	try
+	{
+		Form nuclear("Nuclear Code", 0, 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
+	std::cout << "----------------------------------------------" << std::endl;
+	try
+	{
+		Bureaucrat gauth("gauthier", 26);
+		std::cout << gauth << std::endl;
+		Form nuclear("Nuclear Code", 1, 1);
+		Form sausage("Sausage at lunch", 120, 120);
+		std::cout << std::endl;
+		std::cout << nuclear << std::endl;
+		std::cout << std::endl;
+		std::cout << sausage << std::endl;
+		sausage.beSigned(gauth);
+		gauth.signForm(sausage);
+		std::cout << std::endl;
+		std::cout << sausage << std::endl;
+		std::cout << std::endl;
+		gauth.signForm(nuclear);
+		nuclear.beSigned(gauth);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
+	
+	return (0);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,16 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_H
-#define FORM_H
+#ifndef AFORM_H
+#define AFORM_H
 
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <cstdlib>
+#include <fstream>
+
+#define BLUE "\033[94m"
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
 
 class Bureaucrat;  // Forward declaration de Bureaucrat
 
-class Form {
+class AForm {
 
     private :
     std::string const   _name;
@@ -29,15 +37,15 @@ class Form {
 
     public :
     // constructors and deconstructor
-    Form();
-    Form(const Form &src);
-    Form(std::string name);
-    Form(int sign_grade, int exec_grade);
-    Form(std::string name, int sign_grade, int exec_grade);
-    ~Form();
+    AForm();
+    AForm(const AForm &src);
+    AForm(std::string name);
+    AForm(int sign_grade, int exec_grade);
+    AForm(std::string name, int sign_grade, int exec_grade);
+    virtual ~AForm();
 
     // Overloaded Operators 
-    Form &operator=(const Form &src);
+    AForm &operator=(const AForm &src);
 
     // Getters
     const std::string getName(void)const;
@@ -47,24 +55,32 @@ class Form {
 
     // Member function
     void beSigned(Bureaucrat &b);
+    void	execute(Bureaucrat const& executor) const;
+    virtual void action() const = 0;
 
     // Exceptions
     class GradeTooHighException : public std::exception {
         public :
             virtual const char* what() const throw() {
-                return ("Form grade is too High kopain\n");
+                return ("AForm grade is too High kopain\n");
             }
     };
 
     class GradeTooLowException : public std::exception {
         public :
             virtual const char* what() const throw() {
-                return ("Form grade is too Low kopain\n");
+                return ("AForm grade is too Low kopain\n");
+            }
+    };
+     class UnsignedException : public std::exception {
+        public :
+            virtual const char* what() const throw() {
+                return ("AForm is unsigned kopain\n");
             }
     };
 };
 
 // Overloaded ostream
-std::ostream &operator<<(std::ostream &o, Form &a);
+std::ostream &operator<<(std::ostream &o, AForm &a);
 
 #endif
