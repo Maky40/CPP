@@ -1,11 +1,11 @@
 
-NAME = convert
+NAME = serialization
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CPP = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 %.o	: %.cpp
 	@$(CPP) $(FLAGS) -c $< -o $@

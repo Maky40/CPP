@@ -6,7 +6,7 @@
 /*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 16:51:17 by mnie              #+#    #+#             */
-/*   Updated: 2024/07/09 19:25:14 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/16 08:29:05 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static bool isInt(const std::string input)
 
     if (input.at(0) == '-' || input.at(0) == '+')
         i++;
-    for (i; i < input.length(); i++)
+    for (; i < input.length(); i++)
     {
         if (!isdigit(input.at(i)))
             return false;
@@ -107,7 +107,7 @@ static bool isFloat(const std::string input)
         return false;
     if (input.at(0) == '-' || input.at(0) == '+')
         i++;
-    for (i; i < input.length(); i++)
+    for (; i < input.length(); i++)
     {
         if(!isdigit(input.at(i)) && input.at(i) != '.')
             return false;
@@ -121,7 +121,7 @@ static bool isFloat(const std::string input)
             point = true;
         }
     }
-    
+    return true;
 }
 
 static bool isDouble(const std::string input)
@@ -159,6 +159,33 @@ static int getType(const std::string input)
     return 4;
 }
 
+static int ft_stoi(const std::string str)
+{
+    int num;
+    std::stringstream ss(str);
+
+    ss >> num;
+    return num;
+}
+
+static float ft_stof(const std::string str)
+{
+    float num;
+    std::stringstream ss(str);
+
+    ss >> num;
+    return num;
+}
+
+static double ft_stod(const std::string str)
+{
+    double num;
+    std::stringstream ss(str);
+
+    ss >> num;
+    return num;
+}
+
 void ScalarConverter::convert(const std::string input)
 {
     switch (getType(input))
@@ -168,21 +195,21 @@ void ScalarConverter::convert(const std::string input)
             break;
 
         case 1:
-            inputInt(std::stoi(input));
+            inputInt(ft_stoi(input));
             break;
 
         case 2:
             if (isPseudoInput(input))
                 pseudoinput(2, input);
             else
-                inputFloat(std::stof(input));
+                inputFloat(ft_stof(input));
             break;
 
         case 3:
             if (isPseudoInput(input))
                 pseudoinput(3, input);
             else
-                inputDouble(std::stod(input));
+                inputDouble(ft_stod(input));
             break;
 
         default:
