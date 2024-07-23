@@ -1,0 +1,20 @@
+La classe Span peut stocker N entier -> _size_max. Forcement un container (liste ou vecteur)
+
+Fonctions Membre :
+- addNumber -> ajoute un nombre a la Span. Pas de precision ou se fait l'ajoute
+- shortestSpan() -> plus petite distance entre les nombres stockes et la retourner.
+- longestSpan() -> plus grande distance entre les nombres stockes et la retourner.
+
+Afin de verifier si on peut ajouter un nombre ou calculer une distance on doit avoir une fonction qui calcul
+la taille de la liste.
+
+Attention   si pas de nombres -> exception
+            si aucune nombre trouve -> exception
+
+std::minmax
+std::minmax renvoie une paire contenant les plus petites et les plus grandes valeurs parmi les arguments donnés.
+\ Il a plusieurs surcharges pour différentes utilisations.
+
+std::minmax_element trouve les éléments minimum et maximum dans une plage d'éléments. 
+Cette fonction est particulièrement utile pour travailler avec des conteneurs comme les vecteurs, 
+car elle permet de trouver ces valeurs en une seule passe.
