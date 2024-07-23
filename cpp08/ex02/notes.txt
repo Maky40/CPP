@@ -1,0 +1,45 @@
+std::stack -> conteneur adaptateur qui fournit une interface de pile. Il repose sur un autre
+conteneur (comme deque ou vector ou list) pour stocker les elements. Cela lui permet d'etre 
+flexible et de ne pas reimplementer des mecanismes complexes de gestion de memoire (en deleguant
+le stockage a un conteneur sous jacent). 
+Plusieurs operations sont possibles sur std::stack : 
+- push()
+- pop()
+- top()
+...
+
+
+Par defaut le conteneur utilise std::deque comme conteneur sous jacent.
+
+Voici les avantages et inconvenients de tous les conteneurs sous jacent :
+    -std::deque (double-ended queue) : Conteneur par défaut pour std::stack. Il permet des 
+    insertions et des suppressions efficaces aux deux extrémités.
+    
+    -std::vector : Utilisé lorsqu'un accès aléatoire rapide est souhaité. Cependant, les 
+    insertions et suppressions en début de conteneur sont moins efficaces.
+
+    -std::list : Utilisé lorsque des insertions et suppressions efficaces n'importe où dans 
+    le conteneur sont nécessaires, mais l'accès aléatoire est moins performant.
+
+
+Fonctionnement de std::stack : 
+
+std::stack fournit une interface de pile (LIFO : last in, first out). 
+Exemple de declaration generique :
+template <class T, class Container = std::deque<T>>
+class stack {
+public:
+    explicit stack(const Container& = Container());
+    bool empty() const;
+    size_type size() const;
+    T& top();
+    const T& top() const;
+    void push(const T& x);
+    void pop();
+    // ...
+private:
+    Container c; // Conteneur sous-jacent
+};
+
+Afin de rendre std::stack iterable, nous allons creer une classe "MutantStack" heritant de 
+std::stack qui permettra d'exposer les iterateurs du conteneur sous jacent. 
