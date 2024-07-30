@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnie <mnie@student.42perpignan.fr>         +#+  +:+       +#+        */
+/*   By: mnie <mnie@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:02:09 by mnie              #+#    #+#             */
-/*   Updated: 2024/07/24 17:35:39 by mnie             ###   ########.fr       */
+/*   Updated: 2024/07/30 09:34:37 by mnie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,20 @@ class btc{
 		// overloaded operator
 		btc &operator=(const btc &copy);
 		// member functions
-		void init(const std::string& filename);
-		void price_time(const btc &src);
-		bool correct_format(const btc &src);
+		void init();
+		void price_time();
+		void bitcoin_value(const std::string &date, const double &value);
 };
 
+// none members functions
+
+bool valid_digit(const std::string& date, int start, int end);
+bool check_date_format(const std::string& date);
+bool get_file_date(const std::string& line);
+double ft_stod(const std::string str);
+bool check_value(const std::string& value);
+double get_file_value(const std::string& line);
+std::string get_csv_key(const std::string& line);
+double get_csv_value(const std::string& line);
 
 #endif
