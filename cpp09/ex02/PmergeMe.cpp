@@ -110,48 +110,47 @@ double PmergeMe::_getTime() const
     return (t.tv_sec * 1000 + t.tv_usec * 0.001);
 }
 
+template <typename U>
+void moveElement(U &container, std::size_t from, std::size_t to) {
+    // Extraire l'élément à déplacer
+    int element = container[from];
+
+    // Supprimer l'élément de la position initiale
+    container.erase(container.begin() + from);
+
+    // Insérer l'élément à la nouvelle position
+    if (to > from) {
+        container.insert(container.begin() + to - 1, element);
+    } else {
+        container.insert(container.begin() + to, element);
+    }
+}
+
 template <typename T>
 void PmergeMe::fordJohnsonSort(T &container)
 {
-    if (container.size() < 2)
-        return;
-
-    typename T::iterator start = container.begin();
-    typename T::iterator end = container.end();
-
-    if (std::distance(start, end) < 16)
-    {
-        for (typename T::iterator i = start; i != end; ++i)
-        {
-            for (typename T::iterator j = i; j != start && *(j - 1) > *j; --j)
-            {
-                std::swap(*j, *(j - 1));
-            }
-        }
-        return;
-    }
-
-    typename T::iterator half = start + (std::distance(start, end) / 2);
-    T left(start, half);
-    T right(half, end);
-
-    fordJohnsonSort(left);
-    fordJohnsonSort(right);
-
-    typename T::iterator i = left.begin();
-    typename T::iterator j = right.begin();
-    typename T::iterator k = start;
-    while (i != left.end() && j != right.end())
-    {
-        if (*i < *j)
-            *(k++) = *(i++);
-        else
-            *(k++) = *(j++);
-    }
-    while (i != left.end())
-        *(k++) = *(i++);
-    while (j != right.end())
-        *(k++) = *(j++);
+	typename T::iterator it = container.begin();
+	int x = 0;
+	for (size_t i = 0; i < container.size() / 2; i++)
+	{
+		if (*(it + x) > *(it + x + 1))
+			std::swap(*(it + x), *(it + x + 1));
+		x += 2;
+	}
+	if (container.size() > 2)
+	{
+		int y;
+		for (size_t i = 2; i < container.size(); i++)
+		{
+			y = i - 1;
+			if (*(it + i) < *(it + y))
+			{
+				while (y != -1 && *(it + i) < *(it + y))
+					y--;
+				moveElement(container, i, y + 1);
+			}
+		}
+	}
 }
 
 /************************* Stream operator overloads **************************/
